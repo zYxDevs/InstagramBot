@@ -14,7 +14,7 @@ async def _auth(bot, msg):
     confirmation = await bot.ask(msg.from_user.id,
                                  "**Do you wish to proceed?** \n\nSend '`yes`' or '`y`' for positive "
                                  "confirmation.\nSend '`no`' or '`n`' to cancel authorization.")
-    if not confirmation.text.lower() in ['yes', 'y']:
+    if confirmation.text.lower() not in ['yes', 'y']:
         await confirmation.reply("Authorization Cancelled", quote=True)
         await msg.stop_propagation()
         return
